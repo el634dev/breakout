@@ -4,6 +4,8 @@ const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 // Hold the radius of the drawn circle and used for calculations
 const ballRadius = 10;
+// Executed within setInterval every 10 milliseconds
+const interval = setInterval(draw, 10);
 
 // Set x to the width of the Canvas / 2
 let x = canvas.width / 2;
@@ -54,27 +56,34 @@ function draw() {
     // Create paddle
     drawPaddle();
 
-    // Update the x and y
-    x += dx;
-    y += dy;
-
-    // Collision Logic
-    // Top and bottom edge for y
-    if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
-        dy = -dy;
-    }
-
-     // Left and right for x
+    // Collision Logic for x
     if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
         dx = -dx;
     }
 
+    // Collision Logic for y
+    if (y + dy < ballRadius) {
+        dy = -dy;
+    } else if (y + dy > canvas.height-ballRadius) {
+        if (x > paddleX && x < paddleX + paddleWidth) {
+            dy = -dy;
+        } else {
+            alert("Game Over");
+            document.location.reload();
+            clearInterval(interval);
+        }
+    } 
+    
     // Check cursor keys
     if (rightPressed) {
         paddleX = Math.min(paddleX + 7, canvas.width - paddleWidth);
     } else if (leftPressed) {
         paddleX = Math.max(paddleX - 7, 0);
     }
+
+    // Update the x and y
+    x += dx;
+    y += dy;
 }
 
 // Event handlers
@@ -94,5 +103,3 @@ document.addEventListener("keyup", function(e) {
       }
 }, false);
   
-// Executed within setInterval every 10 milliseconds
-setInterval(draw, 10);
