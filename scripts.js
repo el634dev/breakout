@@ -7,6 +7,15 @@ const ballRadius = 10;
 // Executed within setInterval every 10 milliseconds
 const interval = setInterval(draw, 10);
 
+// Brick Information
+const brickRowCount = 3;
+const brickColCount = 5;
+const brickWidth = 75;
+const brickHeight = 20;
+const brickPadding = 10;
+const brickTopOffset = 30;
+const brickLeftOffset = 30;
+
 // Set x to the width of the Canvas / 2
 let x = canvas.width / 2;
 // Set y to the height of the Canvas - 30
@@ -48,9 +57,31 @@ function drawPaddle() {
     ctx.closePath();
 }
 
+function drawBricks() {
+    for (let col = 0; col < brickColCount; col += 1) {
+        for (let row = 0; row < brickRowCount; row += 1) {
+            // Set x and y for bricks
+            const brickX = col * (brickWidth + brickPadding) + brickLeftOffset;
+            const brickY = row * (brickHeight + brickPadding) + brickTopOffset;
+            // Try x and y
+            bricks[col][row].x = brickX;
+            bricks[col][row].y = brickY;
+
+            ctx.beginPath();
+            ctx.rect(brickX, brickY, brickWidth, brickHeight);
+            ctx.fillStyle = "#0095DD";
+            ctx.fill();
+            ctx.closePath();
+        }
+    }
+}
+
+// Draw to screen
 function draw() {
     // Clear area before drawing new shape
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Create bricks
+    drawBricks();
     // Create shape
     drawBall();
     // Create paddle
@@ -103,3 +134,14 @@ document.addEventListener("keyup", function(e) {
       }
 }, false);
   
+
+// 2D Array
+const bricks = [];
+
+// Create new bricks
+for (let col = 0; col < brickColCount; col += 1) {
+    bricks[col] = [];
+    for (let row = 0; row < brickRowCount; row += 1) {
+        bricks[col][row] = {x: 0, y: 0};
+    }
+}
