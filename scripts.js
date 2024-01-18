@@ -37,7 +37,7 @@ let y = canvas.height - 30;
 // --------------------------------
 // Define paddle width and height
 const paddleHeight = 10;
-const paddleWidth = 75;
+const paddleWidth = 80;
 // Value to create motion
 let paddleX = (canvas.width - paddleWidth) / 2;
 
@@ -57,7 +57,7 @@ function drawBall() {
   // Draw shape and fill
   ctx.beginPath();
   ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
-  ctx.fillStyle = '#0095DD';
+  ctx.fillStyle = '#0000ff';
   ctx.fill();
   // Close drawing
   ctx.closePath();
@@ -69,7 +69,7 @@ function drawPaddle() {
   // Draw shape and fill
   ctx.beginPath();
   ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
-  ctx.fillStyle = '#0095DD';
+  ctx.fillStyle = '#ff8c00';
   ctx.fill();
   // Close drawing
   ctx.closePath();
@@ -84,13 +84,13 @@ function drawBricks() {
         // Set x and y for bricks
         const brickX = col * (brickWidth + brickPadding) + brickLeftOffset;
         const brickY = row * (brickHeight + brickPadding) + brickTopOffset;
-        // Try x and y
+        // ------------------------
         bricks[col][row].x = brickX;
         bricks[col][row].y = brickY;
 
         ctx.beginPath();
         ctx.rect(brickX, brickY, brickWidth, brickHeight);
-        ctx.fillStyle = '#0095DD';
+        ctx.fillStyle = '#32cd32';
         ctx.fill();
         ctx.closePath();
       }
@@ -101,16 +101,16 @@ function drawBricks() {
 // --------------------------------
 // Draw score to canvas
 function drawScore() {
-  ctx.font = '16px Arial';
-  ctx.fillStyle = '#00000';
+  ctx.font = '16.5px Arial';
+  ctx.fillStyle = '#000000';
   ctx.fillText(`Score: ${score}`, 8, 20);
 }
 
 // --------------------------------
 // Draw score to canvas
 function drawLives() {
-  ctx.font = '16px Arial';
-  ctx.fillStyle = '#0095DD';
+  ctx.font = '16.5px Arial';
+  ctx.fillStyle = '#000000';
   ctx.fillText(`Lives: ${lives}`, canvas.width - 65, 20);
 }
 
