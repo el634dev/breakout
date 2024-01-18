@@ -154,6 +154,13 @@ document.addEventListener("keyup", function(e) {
     }
 }, false);
 
+document.addEventListener("mousemove", function(e) {
+    const relativeX = e.clientX - canvas.offsetLeft;
+    if (relativeX > 0 && relativeX < canvas.width) {
+        paddleX = relativeX - paddleWidth / 2;
+    }
+}, false);
+
 // --------------------------------
 // Collision Detection for bricks
 function collisionDetection() {
