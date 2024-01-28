@@ -20,11 +20,11 @@
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 ## Important
--  If you do not have Live Server then you will be unable to see any changes or errors with your code
+-  If you do not have Live Server then you will be unable to see any changes or errors with your code unless you use node to run your file
 
 ## Technologies Used
-- [![Langs Used](https://skillicons.dev/icons?i=js,html,css)](https://skillicons.dev)
-- [![Code Editor](https://skillicons.dev/icons?i=vscode)](https://skillicons.dev)
+[![Langs Used](https://skillicons.dev/icons?i=js,html,css)](https://skillicons.dev)
+[![Code Editor](https://skillicons.dev/icons?i=vscode)](https://skillicons.dev)
 
 ## Features
 List of features here:
